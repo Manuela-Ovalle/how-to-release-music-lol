@@ -36,7 +36,7 @@ export function addTasks(newTask) {
   }
 }
 
-export function createTodos(newTask) {
+export function createTask(newTask) {
   return (dispatch) => {
     return addTasksApi(newTask)
       .then((updatedTasks) => {
