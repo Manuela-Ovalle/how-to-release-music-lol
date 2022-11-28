@@ -11,7 +11,7 @@ export function getTasksApi() {
 export function addTasksApi(newTask) {
   return request
     .post('/api/v1/tasks')
-    .send({ task })
+    .send({ newTask })
     .then((res) => {
       return res.body
     })
