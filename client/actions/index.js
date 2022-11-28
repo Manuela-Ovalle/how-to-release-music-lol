@@ -1,18 +1,18 @@
-import { getFruits } from '../apis/fruits'
+import { getTasksApi } from '../../client/apis/apiClient'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SET_TASKS = 'SET_TASKS'
 
-export function setFruits(fruits) {
+export function setTasks(task) {
   return {
-    type: SET_FRUITS,
-    payload: fruits,
+    type: SET_TASKS,
+    payload: task,
   }
 }
 
 export function fetchFruits() {
   return (dispatch) => {
-    return getFruits().then((fruits) => {
-      dispatch(setFruits(fruits))
+    return getTasksApi().then((tasks) => {
+      dispatch(setTasks(tasks))
     })
   }
 }
