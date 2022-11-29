@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
     })
     .catch((err) => {
       console.log(err)
-      res.status(500).json({ message: 'Something went wrong in the getTasks route' })
+      res
+        .status(500)
+        .json({ message: 'Something went wrong in the getTasks route' })
     })
 })
 
@@ -26,8 +28,23 @@ router.post('/', (req, res) => {
     .catch((err) => console.error(err.message))
 })
 
-router.patch('/', (req, res)=>{
-  db.updateTasks
+router.put('/', (req, res) => {
+  db.updateTasks(req.body.task)
+    .then((updateTask) => {
+      res.json(updateTask)
+      return null
+    })
+    .catch((err) => {
+      console.error(err)
+      res.sendStatus(500)
+    })
+})
+
+router.delete('/', (req, res) =>{
+  db.deleteTasks(req.body.task)
+    .then((delTask) => {
+
+    })
 })
 
 module.exports = router
